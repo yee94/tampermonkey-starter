@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google and Facebook Ad Test</title>
+    <script>
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        let expires = 'expires=' + d.toUTCString();
+        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+      }
+      function getCookie(cname) {
+        let name = cname + '=';
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return '';
+      }
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-53HKCX6');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- End Google Tag Manager (noscript) -->
+    <div>This is an Google and Facebook Ad test page</div>
+
+    <div>
+      <span>visit_id:</span>
+      <span id="visit_id"></span>
+    </div>
+    <div>
+      <button id="googlea">Google tracka</button>
+      <button id="googleb">Google trackb</button>
+    </div>
+
+    <script>
+      const VISIT_ID_COOKIE_KEY = 'visit_id';
+      const genVisitId = () => {
+        let vid = getCookie(VISIT_ID_COOKIE_KEY);
+        if (!vid) {
+          vid = `v${Math.random().toFixed(8).substr(2)}`;
+          setCookie(vid);
+        }
+        document.querySelector('#visit_id').innerHTML = vid;
+      };
+
+      genVisitId();
+
+      document.querySelector('#googlea').addEventListener('click', () => {
+        // todo google report a
+      });
+
+      document.querySelector('#googleb').addEventListener('click', () => {
+        // todo google report b
+      });
+    </script>
+  </body>
+</html>

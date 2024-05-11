@@ -1,0 +1,17 @@
+node_modules
+*.log
+*.log.*
+logs
+# .vscode
+dest
+coverage
+.idea
+package-lock.json
+.DS_*
+.nyc*
+run/
+package-lock.json
+.nodejs-cache
+AUTHORS
+.serverless
+.faas_debug_tmp
